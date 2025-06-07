@@ -5,7 +5,20 @@
   <title>My Blog Test</title>
 </head>
 <body>
-  <h1>Welcome to My Blog</h1>
-  <p><a href="/admin">Go to Admin Dashboard</a></p>
+    <h1>Welcome to My Blog</h1>
+    <p><a href="/admin">Go to Admin Dashboard</a></p>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+        if (!user) {
+            window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+            });
+        }
+        });
+        window.netlifyIdentity.init();
+    }
+</script>
 </body>
 </html>
